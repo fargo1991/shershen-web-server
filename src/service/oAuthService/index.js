@@ -3,23 +3,35 @@
  */
 
 const models = require("./models.js");
-const routes = require("./routes.js")
-
-function initRoutes(){
-
-}
+const routes = require("./routes.js");
+const secure = require("./secure.js");
 
 module.exports = function(app, seq){
     var self = this;
 
-    self.app = app;
+    self.authenticate = function (token, callback) {
+      console.log(token)
+
+      seq.models.token.findOne({where : { token : token } })
+        .then(result => {
+          console.log("__________result")
+          console.log(result)
+          if (result) callback.success({ success : true, uid : result.dataValues.userId })
+          else callback.error({ success : false })
+        } )
+        .catch( err => {
+          console.log("_____________error")
+          callback.error({ success : false })
+        })
+
+    }
 
     models.init(seq);
     routes.init(app, seq,
         {
         /**
          * credentials : {
-         *      @username : String,
+         *      @login : String,
          *      @password : String
          *  }
          *  callback : {
@@ -28,6 +40,43 @@ module.exports = function(app, seq){
          *  }
          */
             auth : function(credentials, callback){
+
+                var user = {};
+
+                seq.models.user.findOne({ where : { login : credentials.login }})
+                  .then(
+                    (result) => {
+                        if (result.dataValues.password == credentials.password){
+                            user = result.dataValues;
+                            return seq.models.token.findOne({ where : { userId : user.id }});
+                        }
+                      else callback.error({ success : false, status : 401 })
+                    }
+                  )
+                  .then(
+                    (result) => {
+                      if (!result){
+                        var token = secure.generateToken(user.id);
+                        return seq.models.token.create({ userId : user.id, token : token})
+
+                      } else {
+                          // Здесь надо написать проверку срока годности токена,
+                          // на данный момент генерируется новый токен без проверки
+                        var token = secure.generateToken(user.id);
+                        return seq.models.token.update( Object.assign(result.dataValues, { token : token }),
+                          { where : { id : result.dataValues.id }, returning : true } )
+                      }
+                    }
+                  )
+                  .then(
+                    (result) => {
+                      if(result.length == 2) result.token = result[1][0].token
+
+                        callback.success({ success : true, access_token : result['token'] })
+                    }
+                  )
+                  .catch( (err) => { console.log(err); callback.error({ success : false, status : 500 })})
+                
                 /*
                   find user be `username`
                   compare `password`
@@ -56,5 +105,9 @@ module.exports = function(app, seq){
             }
         }
     );
+
+    return {
+      authenticate : self.authenticate
+    }
 
 }

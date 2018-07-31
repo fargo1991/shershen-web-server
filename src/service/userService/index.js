@@ -5,7 +5,7 @@
 var models = require("./models.js");
 var routes = require("./routes.js");
 
-module.exports = function(app, seq){
+module.exports = function(app, seq, auth){
 
     models.init(seq);
     routes.init(app, seq,
@@ -23,6 +23,12 @@ module.exports = function(app, seq){
                             console.log('Error was occured during USER creating')
                         }
                     )
+            },
+            get : function (access_token, callback) {
+              auth.authenticate(access_token, {
+                success : function(parms ){callback.success(parms) },
+                error : function(parms){callback.error(parms) },
+              })
             }
         }
     );

@@ -5,8 +5,10 @@ module.exports = {
     "development" : {
         "username" : "postgres",
         "password" : "123",
-        "host" : "127.0.0.1",
-        "database" : "shershen",
+        // "host" : "127.0.0.1",
+        "host" : "192.168.2.66", // home msc
+        "database" : "sher-shen",
+        // "database" : "shershen",
         "dialect" : "postgresql"
     },
     "test" : {

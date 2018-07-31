@@ -15,11 +15,9 @@ module.exports = {
             token : {
                 unique : true,
                 type : Sequelize.STRING
-            },
-            userId : {
-                type: Sequelize.INTEGER
             }
-        });
+        }
+        );
 
         return [ Token ]
 

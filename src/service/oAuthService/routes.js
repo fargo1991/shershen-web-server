@@ -4,14 +4,29 @@
 module.exports = {
     init : function(app, models, strategics){
 
-        app.get('/oauth/token', function(req, res){
+        app.post('/oauth/token', function(req, res){
+
             strategics.auth({
-                username : req.body.username,
+                login : req.body.login,
                 password : req.body.password
                 },
                 {
-                    success : function(params){ res.send(params) },
-                    error : function(params){ res.send(params) }
+                    success : function(params){
+
+                        if (params.status) res.setHeader('status', params.status)
+                        else res.setHeader( 'status', 200 );
+
+                        res.send(params)
+                    },
+                    error : function(params){
+
+                        console.log(params)
+
+                      if (params.status) res.setHeader('status', params.status)
+                      else res.setHeader( 'status', 500);
+
+                        res.send(params)
+                    }
                 }
             )
         });

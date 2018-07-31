@@ -16,8 +16,10 @@ var userService = require("./service/userService");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-oAuthService(app, sequelize);
-userService(app, sequelize);
+var auth = oAuthService(app, sequelize);
+userService(app, sequelize, auth);
+
+
 sequelize.sync()
 
 
