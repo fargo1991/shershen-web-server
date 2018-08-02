@@ -10,17 +10,15 @@ module.exports = function(app, seq){
     var self = this;
 
     self.authenticate = function (token, callback) {
-      console.log(token)
+
+        if(!token) throw new Error('Token is undefined')
 
       seq.models.token.findOne({where : { token : token } })
         .then(result => {
-          console.log("__________result")
-          console.log(result)
           if (result) callback.success({ success : true, uid : result.dataValues.userId })
           else callback.error({ success : false })
         } )
         .catch( err => {
-          console.log("_____________error")
           callback.error({ success : false })
         })
 

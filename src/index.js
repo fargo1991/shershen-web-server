@@ -5,7 +5,10 @@
 var express = require("express");
 var app = express();
 var Sequelize = require("sequelize");
+
 var bodyParser = require("body-parser");
+var secure = require("./service/oAuthService/secure");
+// var authenticate = secure().authenticate;
 
 var sequelize = new Sequelize( require('./config.js')["development"] )
 
@@ -15,14 +18,12 @@ var userService = require("./service/userService");
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(secure.authenticate(sequelize));
 
 var auth = oAuthService(app, sequelize);
 userService(app, sequelize, auth);
 
-
 sequelize.sync()
-
-
 
 app.get('/', function(req, res){
     res.send('Server is running')
@@ -31,3 +32,4 @@ app.get('/', function(req, res){
 app.listen(3030, function(params){
     console.log("Server listening in port:3030")
 })
+

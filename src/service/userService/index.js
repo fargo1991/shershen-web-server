@@ -26,7 +26,7 @@ module.exports = function(app, seq, auth){
             },
             get : function (access_token, callback) {
               auth.authenticate(access_token, {
-                success : function(parms ){callback.success(parms) },
+                success : function(parms){callback.success(parms) },
                 error : function(parms){callback.error(parms) },
               })
             }
