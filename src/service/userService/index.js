@@ -4,6 +4,7 @@
 
 var models = require("./models.js");
 var routes = require("./routes.js");
+var secure = require('../oAuthService/secure.js');
 
 module.exports = function(app, seq, auth){
 
@@ -25,10 +26,23 @@ module.exports = function(app, seq, auth){
                     )
             },
             get : function (access_token, callback) {
-              auth.authenticate(access_token, {
-                success : function(parms){callback.success(parms) },
-                error : function(parms){callback.error(parms) },
+
+                let userId = secure.verifyToken(access_token).userId;
+
+              seq.models.user.findOne({
+                  where : { id : userId },
+                  attributes: { exclude : ['password']}
               })
+                  .then(
+                      (result) => {
+                          if (result) callback.success({ success : true, data : result })
+                          else callback.success({ success : false, msg : "User not found", status : 404 })
+                      },
+                      (error) => {
+                          callback.error({ success : false, msg: 'Something went wrong.' })
+                          console.log('Error was occured during USER getting')
+                      }
+                  )
             }
         }
     );
