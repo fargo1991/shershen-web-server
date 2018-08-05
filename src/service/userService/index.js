@@ -6,6 +6,7 @@ var models = require("./models.js");
 var routes = require("./routes.js");
 var secure = require('../oAuthService/secure.js');
 
+
 module.exports = function(app, seq, auth){
 
     models.init(seq);
