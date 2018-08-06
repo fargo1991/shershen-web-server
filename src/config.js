@@ -1,6 +1,8 @@
 /**
  * Created by yaroslav on 31.07.18.
  */
+
+
 module.exports = {
     "DB": {
       // jino
@@ -37,5 +39,6 @@ module.exports = {
       { route : '/user', methods : [ 'GET', 'PUT', 'DELETE' ] },
       { route : '/merchant', methods : [ 'PUT', 'DELETE', 'POST' ] }
     ],
+    "ACCESS_CONTROL" : require('./accessControl.js'),
     "HOST_URL" : 3456
 }

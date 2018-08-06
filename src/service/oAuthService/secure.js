@@ -1,13 +1,5 @@
 let Secure = function(){
 
-    const roles = {
-        merchant : {
-            routes : [
-                ''
-            ]
-        }
-    }
-
   const SECRET = 'mynameisvasya';
   let ROUTES = [];
 
@@ -15,7 +7,13 @@ let Secure = function(){
 
   let getSecret = function(){ return SECRET }
 
-  let generateToken = function(userId){ return jwt.sign({ 'userId': userId, tokenRandomizer : Math.random(256*userId) }, SECRET) }
+  let generateToken = function(userId, role){
+      return jwt.sign(
+          {
+              'userId': userId,
+              'role' : role,
+              'tokenRandomizer' : Math.random(256*userId) }, SECRET)
+        }
 
   let verifyToken = function (token){ return jwt.verify(token, SECRET) }
 
@@ -26,6 +24,11 @@ let Secure = function(){
     }
     return false;
   }
+
+  let checkAccessControl = function(route, role, body){
+
+  }
+
   let authenticate = function(seq){
       return function(req,res,next){
           if (!checkAccessTokenNeeded(req)){ next(); return; }
@@ -41,14 +44,18 @@ let Secure = function(){
           } else {
               seq.models.token.findOne({ where : { token : access_token } })
                   .then( result => {
-                      if (result){ next() }
+                      if (result){
+                          console.log(verifyToken(access_token).role)
+                          // checkAccessControl(req.baseUrl, role, body)
+                          next()
+                      }
                       else {
                           res.status(401);
                           res.send({ success : false })
                       }
                   })
                   .catch( error => {
-                      res.status(500)
+                      res.status(500);
                       res.send({ success : false, msg : error })
                   })
           }
@@ -68,7 +75,6 @@ let Secure = function(){
       generateToken : generateToken,
       verifyToken : verifyToken,
       authenticate : authenticate
-
   }
 }
 

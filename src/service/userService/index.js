@@ -23,6 +23,7 @@ module.exports = function(app, seq, auth){
                         (error) => {
                             callback.error({ success : false, msg : `Something went wrong.`})
                             console.log('Error was occured during USER creating')
+                            console.log(error)
                         }
                     )
             },

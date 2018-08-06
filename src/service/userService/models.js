@@ -17,6 +17,10 @@ module.exports =
                     type : Sequelize.STRING,
                     notEmpty : true
                 },
+                role : {
+                  type : Sequelize.STRING,
+                  notEmpty : true
+                },
                 password : {
                     type : Sequelize.STRING,
                     notEmpty : true

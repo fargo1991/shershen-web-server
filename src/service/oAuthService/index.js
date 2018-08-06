@@ -54,13 +54,13 @@ module.exports = function(app, seq){
                   .then(
                     (result) => {
                       if (!result){
-                        var token = secure.generateToken(user.id);
+                        var token = secure.generateToken(user.id, user.role);
                         return seq.models.token.create({ userId : user.id, token : token})
 
                       } else {
                           // Здесь надо написать проверку срока годности токена,
                           // на данный момент генерируется новый токен без проверки
-                        var token = secure.generateToken(user.id);
+                        var token = secure.generateToken(user.id, user.role);
                         return seq.models.token.update( Object.assign(result.dataValues, { token : token }),
                           { where : { id : result.dataValues.id }, returning : true } )
                       }

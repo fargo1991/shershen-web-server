@@ -3,6 +3,7 @@
  */
 const { check, validationResult } = require('express-validator/check');
 
+
 module.exports = {
 
     init : function(app, seq, strategics){
@@ -47,8 +48,11 @@ module.exports = {
         app.post('/user',[
                 check('login').isLength({ min : 2, max : 100 }),
                 check('password').isLength({ min : 5}),
+                check('role').isIn( require('../../accessControl').map( role => role.role ))
             ],
             function(req, res){
+
+                console.log(require('../../accessControl').map( role => role.role ))
 
                 const errors = validationResult(req);
                 if(!errors.isEmpty()){
