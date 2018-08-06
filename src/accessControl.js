@@ -2,6 +2,9 @@
  * Created by yaroslav on 06.08.18.
  */
 
+
+// [!] - Константы с ролями пользователей не менять! Эти значения сохраняются в БД. Таблицы: users, token (зашифрована в jwt)
+
 const ADMIN = 'ADMIN';
 const FRAN_ADMIN = 'FRAN_ADMIN';
 const BRAND_ADMIN = 'BRAND_ADMIN';
