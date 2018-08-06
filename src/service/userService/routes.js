@@ -77,6 +77,10 @@ module.exports = {
                 }
         });
 
+        app.put('/user', function(){
+
+        })
+
     }
 
 }
