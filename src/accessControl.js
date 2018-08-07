@@ -21,7 +21,7 @@ module.exports =
                     /** @user  */
                     route : '/user',
                     methods : {
-                        'GET' : { access : true, accessFields : 'all', exceptedFields : 'password' },
+                        'GET' : { access : true, accessFields : 'all', exceptedFields : ['password'] },
                         'POST' : { access : true, accessFields : 'all' },
                         'PUT' : { access : true, accessFields : 'all' },
                         'DELETE' : { access : true }
@@ -46,9 +46,9 @@ module.exports =
                     /** @user  */
                     route : '/user',
                     methods : {
-                        'GET' : { access : true, accessFields : 'all', exceptedFields : 'password' },
-                        'POST' : { access : true, accessFields : 'all', exceptedFields : `role=${FRAN_ADMIN},${ADMIN}` },
-                        'PUT' : { access : true, accessFields : 'all', exceptedFields : `role=${FRAN_ADMIN},${ADMIN}` },
+                        'GET' : { access : true, accessFields : 'all', exceptedFields : [ 'password' ] },
+                        'POST' : { access : true, accessFields : 'all', exceptedFields : [ `role=${FRAN_ADMIN},${ADMIN}` ] },
+                        'PUT' : { access : true, accessFields : 'all', exceptedFields : [ `role=${FRAN_ADMIN},${ADMIN}` ] },
                         'DELETE' : { access : true }
                     }
                 },
@@ -71,9 +71,9 @@ module.exports =
                     /** @user  */
                     route : '/user',
                     methods : {
-                        'GET' : { access : true, accessFields : 'all', exceptedFields : 'password' },
-                        'POST' : { access : true, accessFields : 'all', exceptedFields : `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` },
-                        'PUT' : { access : true, accessFields : 'all', exceptedFields : `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` },
+                        'GET' : { access : true, accessFields : 'all', exceptedFields : [ 'password' ] },
+                        'POST' : { access : true, accessFields : 'all', exceptedFields : [ `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` ] },
+                        'PUT' : { access : true, accessFields : 'all', exceptedFields : [ `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` ] },
                         'DELETE' : { access : true }
                     }
                 },
@@ -147,7 +147,7 @@ module.exports =
                     route : '/user',
                     methods : {
                         'GET' : { access : true, accessFields : 'all', exceptedFields : ['password'] },
-                        'POST' : { access : true,  accessFields : 'all', exceptedFields : `role=${MERCHANT_ADMIN},${FRAN_ADMIN},${ADMIN}` },
+                        'POST' : { access : true,  accessFields : 'all', exceptedFields : [`role=${MERCHANT_ADMIN},${FRAN_ADMIN},${ADMIN}`] },
                         'PUT' : { access : false, accessFields : 'none' },
                         'DELETE' : { access : false }
                     }

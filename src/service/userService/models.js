@@ -15,7 +15,8 @@ module.exports =
                 },
                 login : {
                     type : Sequelize.STRING,
-                    notEmpty : true
+                    notEmpty : true,
+                    unique : true
                 },
                 role : {
                   type : Sequelize.STRING,

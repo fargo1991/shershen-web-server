@@ -19,9 +19,11 @@ module.exports = function(app, seq, auth){
                             callback.success({ success : true, msg : `User ${result.dataValues.login} was created.`})
                             console.log('New USER was created:')
                             console.log(result);
-                        },
+                        }
+                    )
+                    .catch(
                         (error) => {
-                            callback.error({ success : false, msg : `Something went wrong.`})
+                            callback.error({ success : false, msg : error.name == 'SequelizeUniqueConstraintError' ? 'SequelizeUniqueConstraintError' : 'Something went wrong =('})
                             console.log('Error was occured during USER creating')
                             console.log(error)
                         }
@@ -33,7 +35,7 @@ module.exports = function(app, seq, auth){
 
               seq.models.user.findOne({
                   where : { id : userId },
-                  attributes: { exclude : ['password']}
+                  attributes: { exclude : ['password'] }
               })
                   .then(
                       (result) => {

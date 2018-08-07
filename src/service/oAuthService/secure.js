@@ -32,6 +32,31 @@ let Secure = function(){
     return false;
   }
 
+  let hasFieldValues = function(field){
+
+      // let regExp = /=/;
+      let result = field.search(/=/);
+
+      return result > -1
+  }
+
+  let illegalValues = function(field){
+      return (field.split('=')[1].split(','));
+    }
+
+
+  /**
+   *
+   *  Проверка доступа к контроллеру, методу, и полям объекта, в зависимотси от роли пользователя.
+   *  Возвращает статус проверки: false - не прошла, true - ресурс доступен.
+   *  Принимает:
+   *    @route (String) - url контроллера. ('/user', '/merchant' и т.п.)
+   *    @method (String) - один из следующих методов : 'GET', 'POST', 'PUT', 'DELETE'
+   *    @role (String) - одна из следующих ролей : 'ADMIN', 'FRAN_ADMIN', 'BRAND_ADMIN', 'MERCHANT_ADMIN', 'CUSTOMER',
+   *                    если роль не определена, то проверка будет осуществляться для роли 'GUEST'
+   *    @params (Object) - DTO запрашиваемого объекта
+   *
+   * */
 
   let checkAccessControl = function(route, method, role, params){
 
@@ -49,7 +74,17 @@ let Secure = function(){
           let rejected = 0;
           methodAccessControls.exceptedFields.forEach( field => {
             for (reqField in params){
-              rejected += (reqField==field ? 1 : 0)
+
+                let fieldName = hasFieldValues(field) ? field.split('=')[0] : field;
+
+                if (reqField==fieldName) {
+                    if( hasFieldValues(field) ){
+                        illegalValues(field).forEach( illegalValue => {
+                            if(illegalValue == params[reqField]) rejected++ })
+                    }
+                }
+
+                //rejected += (reqField==field ? 1 : 0)
             }
           })
           if (rejected) return false;
@@ -58,50 +93,55 @@ let Secure = function(){
         return false
       }
     }
-
     return true;
-
   }
-
 
   let authenticate = function(seq){
       return function(req,res,next){
 
-          let access_token = ''
+          let access_token = (req.method == 'GET') ?
+              req.query.access_token :
+              req.body.access_token;
 
-          if(req.method == 'GET'){ access_token  = req.query.access_token; }
-          else if(req.method == 'POST' || 'PUT'){ access_token = req.body.access_token; }
+          let userRole = access_token ?
+              verifyToken(access_token).role :
+              'GUEST';
 
-          if(!access_token) {
-              res.status(401);
-              res.send({ success: false, msg : 'Need access_token'})
-          } else {
-              seq.models.token.findOne({ where : { token : access_token } })
-                  .then( result => {
-                      if (result){
-                          if(
-                            checkAccessControl(
-                              req.baseUrl,
-                              req.method,
-                              verifyToken(access_token).role, req.method.toUpperCase() == 'GET' ? req.query : req.body)
-                          ){
-                            next() }
-                          else{
-                            res.status(403);
-                            res.send({ success: false, msg : 'Access denied.s'});
-                          }
-                      }
-                      else {
-                          res.status(401);
-                          res.send({ success : false })
-                      }
-                  })
-                  .catch( error => {
-                    console.log(error)
-                      res.status(500);
-                      res.send({ success : false, msg : error })
-                  })
+
+          if( !checkAccessControl(
+                  req.baseUrl,
+                  req.method,
+                  userRole,
+                  req.method.toUpperCase() == 'GET' ? req.query : req.body) )
+          {
+              res.status(403);
+              res.send({ success: false, msg : 'Access denied.'});
+              return false
           }
+
+          if(userRole == 'GUEST') {
+              next();
+              return false;
+          }
+
+
+          seq.models.token.findOne({ where : { token : access_token } })
+              .then( result => {
+                  if (result){
+                      next();
+                  }
+                  else {
+                      console.log('df')
+                      res.status(401);
+                      res.send({ success : false })
+                  }
+              })
+              .catch( error => {
+                console.log(error)
+                  res.status(500);
+                  res.send({ success : false, msg : error })
+              })
+
       }
   }
 
