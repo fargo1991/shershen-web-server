@@ -65,6 +65,7 @@ let Secure = function(){
 
     if (routeAccessControls !== -1){
       let methodAccessControls = routeAccessControls.methods[method.toUpperCase()];
+
       if (!methodAccessControls.access) return false;
 
       if (methodAccessControls.accessFields == 'all'){
@@ -89,8 +90,8 @@ let Secure = function(){
           })
           if (rejected) return false;
         }
-      } else {
-        return false
+      } else if (!methodAccessControls.accessFields){
+        return true
       }
     }
     return true;
@@ -131,7 +132,6 @@ let Secure = function(){
                       next();
                   }
                   else {
-                      console.log('df')
                       res.status(401);
                       res.send({ success : false })
                   }
@@ -145,12 +145,27 @@ let Secure = function(){
       }
   }
 
+  let fetchRoutes = function(){
+    let routes = []
 
-  let initRoutes = function(app, seq, routes){
-    ROUTES = routes;
+    accessControl.forEach( role => {
+      role.routes.forEach( roleRoute => {
 
-    routes.forEach( route => {
-          app.use(route.route, authenticate(seq))
+        if(!routes.find( fetchedRoute =>  { return fetchedRoute == roleRoute.route } )){
+          routes.push(roleRoute.route);
+
+        }
+      })
+    })
+
+    return routes;
+
+  }
+
+  let initRoutes = function(app, seq){
+    fetchRoutes()
+      .forEach( route => {
+          app.use(route, authenticate(seq))
       });
   }
 

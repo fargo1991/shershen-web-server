@@ -40,5 +40,6 @@ module.exports = {
       { route : '/merchant', methods : [ 'PUT', 'DELETE', 'POST' ] }
     ],
     "ACCESS_CONTROL" : require('./accessControl.js'),
+    "PHONE_CONFIRMATION_TIME_LIMIT" : 300, // 5 min
     "HOST_URL" : 3456
 }

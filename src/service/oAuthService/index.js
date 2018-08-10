@@ -100,7 +100,7 @@ module.exports = function(app, seq){
                 * else
                 * reject, return false
                 * */
-            }
+            },
         }
     );
 

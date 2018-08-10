@@ -20,8 +20,6 @@ module.exports = {
                     },
                     error : function(params){
 
-                        console.log(params)
-
                       if (params.status) res.setHeader('status', params.status)
                       else res.setHeader( 'status', 500);
 
@@ -32,6 +30,7 @@ module.exports = {
         });
 
         app.get('/oauth/token/check', function(req, res){
+
             strategics.authenticate(
                 req.body.access_token,
                 {

@@ -44,11 +44,12 @@ module.exports = {
             }
 
         });
-
+        // Регистрация нового пользователя
         app.post('/user',[
                 check('login').isLength({ min : 2, max : 100 }),
                 check('password').isLength({ min : 5}),
-                check('role').isIn( require('../../accessControl').map( role => role.role ))
+                check('role').isIn( require('../../accessControl').map( role => role.role )),
+                check('phone').isLength({ min : 10})
             ],
             function(req, res){
 
@@ -79,7 +80,31 @@ module.exports = {
 
         app.put('/user', function(){
 
-        })
+        });
+
+        app.delete('/user', function(){
+
+        });
+
+        // Запрос на получение кода подтверждения по смс
+        app.get('/user/phone/confirm', function(req, res){
+            strategics.getConfirmationCode(req.query.access_token,
+              {
+                  success : function(params){
+                      res.status(200);
+                      res.send(params)
+                  },
+                  error : function(params){
+                      res.status(500);
+                      res.send(params)
+                  }
+              }
+              );
+        });
+        // Отправка кода подтврждения
+        app.post('/user/phone/confirm', function(req, res){
+
+        });
 
     }
 

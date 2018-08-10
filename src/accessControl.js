@@ -28,6 +28,16 @@ module.exports =
                     }
                 },
                 {
+                  /** @PhoneNumber confirmation */
+                  route : '/user/phone/confirm',
+                  methods : {
+                    'GET' : { access : true },
+                    'POST' : { access : false },
+                    'PUT' : { access : false },
+                    'DELETE' : { access : false }
+                  }
+                },
+                {
                     /** @merchant */
                     route : '/merchant',
                     methods : {
@@ -51,6 +61,16 @@ module.exports =
                         'PUT' : { access : true, accessFields : 'all', exceptedFields : [ `role=${FRAN_ADMIN},${ADMIN}` ] },
                         'DELETE' : { access : true }
                     }
+                },
+                {
+                  /** @PhoneNumber confirmation */
+                  route : '/user/phone/confirm',
+                  methods : {
+                    'GET' : { access : true },
+                    'POST' : { access : false },
+                    'PUT' : { access : false },
+                    'DELETE' : { access : false }
+                  }
                 },
                 {
                     /** @merchant */
@@ -78,6 +98,16 @@ module.exports =
                     }
                 },
                 {
+                  /** @PhoneNumber confirmation */
+                  route : '/user/phone/confirm',
+                  methods : {
+                    'GET' : { access : true },
+                    'POST' : { access : false },
+                    'PUT' : { access : false },
+                    'DELETE' : { access : false }
+                  }
+                },
+                {
                     /** @merchant */
                     route : '/merchant',
                     methods : {
@@ -103,6 +133,16 @@ module.exports =
                     }
                 },
                 {
+                  /** @PhoneNumber confirmation */
+                  route : '/user/phone/confirm',
+                  methods : {
+                    'GET' : { access : true },
+                    'POST' : { access : false },
+                    'PUT' : { access : false },
+                    'DELETE' : { access : false }
+                  }
+                },
+                {
                     /** @merchant */
                     route : '/merchant',
                     methods : {
@@ -111,7 +151,7 @@ module.exports =
                         'PUT' : { access : true, accessFields : 'all'},
                         'DELETE' : { access : false }
                     }
-                }
+                },
             ]
         },
         {
@@ -128,6 +168,16 @@ module.exports =
                     }
                 },
                 {
+                  /** @PhoneNumber confirmation */
+                  route : '/user/phone/confirm',
+                  methods : {
+                    'GET' : { access : true },
+                    'POST' : { access : false },
+                    'PUT' : { access : false },
+                    'DELETE' : { access : false }
+                  }
+                },
+                {
                     /** @merchant */
                     route : '/merchant',
                     methods : {
@@ -142,7 +192,7 @@ module.exports =
         {
             role : GUEST,
             routes : [
-                {
+                  {
                     /** @user  */
                     route : '/user',
                     methods : {
@@ -151,8 +201,18 @@ module.exports =
                         'PUT' : { access : false, accessFields : 'none' },
                         'DELETE' : { access : false }
                     }
-                },
-                {
+                  },
+                  {
+                    /** @PhoneNumber confirmation */
+                    route : '/user/phone/confirm',
+                    methods : {
+                      'GET' : { access : false },
+                      'POST' : { access : false },
+                      'PUT' : { access : false },
+                      'DELETE' : { access : false }
+                    }
+                  },
+                  {
                     /** @merchant */
                     route : '/merchant',
                     methods : {
@@ -161,7 +221,7 @@ module.exports =
                         'PUT' : { access : false, accessFields : 'none' },
                         'DELETE' : { access : false }
                     }
-                }
+                  }
             ]
         },
 
