@@ -80,14 +80,15 @@ let Secure = function(){
 
                 if (reqField==fieldName) {
                     if( hasFieldValues(field) ){
-                        illegalValues(field).forEach( illegalValue => {
-                            if(illegalValue == params[reqField]) rejected++ })
+                        illegalValues(field).forEach(
+                            illegalValue => {
+                                if(illegalValue == params[reqField]) rejected++
+                        })
                     }
                 }
-
-                //rejected += (reqField==field ? 1 : 0)
             }
-          })
+          });
+
           if (rejected) return false;
         }
       } else if (!methodAccessControls.accessFields){
