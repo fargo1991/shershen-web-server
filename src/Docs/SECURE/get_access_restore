@@ -1,0 +1,16 @@
+Контроллер позволяет восстановить доступ к странице по подтверждению через смс-код.
+
+GET access/restore
+Content-Type: application/json
+
+    {
+        phone : String, либо phone
+        email : String, либо email
+    }
+
+<< ответ
+
+Status : 200 OK // Смс отправлена
+Status : 404 Not Found // Пользовтель с данным номером не зарегистрирован в системе
+Status : 400 // Невалид
+Status : 500 // Что-то пошло не так

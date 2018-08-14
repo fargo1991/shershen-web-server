@@ -31,9 +31,8 @@ app.get('/', function(req, res){
     res.send('Server is running')
 });
 
-const HOST_URL = require('./config.js')['HOST_URL']
+const HOST_URL = require('./config.js')['HOST_URL'];
 
 app.listen(HOST_URL, function(params){
     console.log(`Server listening in port:${HOST_URL}`)
 })
-

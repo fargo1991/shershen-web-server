@@ -1,0 +1,5 @@
+   GET phone/confirm
+   Authorization : Bearer Token
+
+   >> Ответ
+      Status 200 OK : СМС-код отправлен

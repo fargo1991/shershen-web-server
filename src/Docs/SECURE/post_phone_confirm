@@ -1,0 +1,25 @@
+    >> Запрос
+
+     POST /phone/confirm
+     Content-Type : application/json
+     Authorization : Bearer Token
+
+             {
+                smsCode : Number // 6-ти значный
+             }
+
+     << Ответ
+
+     // Номер телефона успешно привязан к профилю
+        Status : 200 OK
+
+     // Номер телефона не совпадает. Попытка привязки сгорает. Таймер: 30 сек.
+        Status : 412 Precondition Failed
+            {
+                errMsg : String
+            }
+     // Время ожидания истекло. Смс-код "сгорел"
+        Status : 408 Request Timeout
+            {
+                errMsg : String
+            }

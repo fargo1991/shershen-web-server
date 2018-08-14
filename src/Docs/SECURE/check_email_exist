@@ -1,0 +1,11 @@
+POST check/email/exist
+
+Content-Type : application-json
+
+    {
+        email : String // валидациия на корректность почты
+    }
+
+Status : 200 OK // Почтовый адрес не занят
+Status : 409 // Такой почтовый адрес уже существует в системе
+Status : 400 // Неправильный запрос.

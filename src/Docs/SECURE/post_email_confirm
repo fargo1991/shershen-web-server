@@ -1,0 +1,12 @@
+POST email/confirm
+
+Content-Type : application/json
+Authorization : access_token
+
+{
+    email : String // почтовый адрес
+}
+
+Status : 200 OK // Письмо с ссылкой подтверждения отправлено
+Status : 400 //
+Status : 500 //
