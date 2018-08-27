@@ -1,3 +1,26 @@
 {
-  "HOST_URL" : 1234
+  "HOST_URL" : 1234,
+  "DB" : {
+    "development": {
+      "database": "fargo-1991_shershen",
+      "host": "postgresql.fargo-1991.myjino.ru",
+      "username": "fargo-1991_shershen",
+      "password": "15mlk89ser",
+      "dialect": "postgresql"
+    },
+    "test": {
+      "username": "",
+      "password": "",
+      "host": "",
+      "database": "",
+      "dialect": "postgresql"
+    },
+    "production": {
+      "username": "",
+      "password": "",
+      "host": "",
+      "database": "",
+      "dialect": "postgresql"
+    }
+  }
 }
