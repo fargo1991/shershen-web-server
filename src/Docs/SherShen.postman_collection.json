@@ -1,0 +1,718 @@
+{
+	"id": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+	"name": "SherShen",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "CUSTOMER",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"order": [
+				"ab0802fc-8469-4860-2980-037e9464e311",
+				"410ae77c-5ac5-617b-64f9-156d17162b65",
+				"eda57b38-4829-c8bc-c061-e49dc47624cb",
+				"4d02d547-2a0a-6b2c-6644-c4fdbb7baf04"
+			],
+			"owner": "2464728",
+			"folders_order": [],
+			"id": "562a7275-cfe7-7e28-2d15-1055936e901b"
+		},
+		{
+			"name": "MERCHANT",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"order": [
+				"0d5b67ee-fb7e-f8f6-ae0f-f9a5f74fd987",
+				"56fdf1f0-955e-1789-f687-ec4861ae17d0",
+				"55bfcc20-10ab-66f1-ce8e-2f118aa0bf5d",
+				"3472a57d-6f5b-8060-bbe4-58f3b1ab74f4"
+			],
+			"owner": "2464728",
+			"folders_order": [],
+			"id": "ab885a73-4290-2909-404a-3fd578fed0c4"
+		},
+		{
+			"name": "SECURE",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"order": [
+				"17d03d08-7777-b6fe-fb63-bb9a48f718fc",
+				"be434d36-dd9b-6890-3a2e-c55370f307a8",
+				"1231b681-5c11-88e7-6b68-68b2e33ceb49",
+				"3332296c-63e1-6c76-d565-bc7e2bb6fec5",
+				"3940561c-7c65-3eb2-e9f0-a272dcd05d23",
+				"d2ca21b6-0a18-e762-2de0-0ce5dc143f73",
+				"6885d05c-6220-46f9-fdaf-13bb550cbe27",
+				"d388e3d7-a602-49e5-8508-46bb5e8820c8",
+				"9eb05069-6f92-4744-312f-902aff78f92d",
+				"ca68236f-e235-5928-c5da-3255b2fdefa6",
+				"07f4a8f9-b1b3-794a-cbed-00f10e92962d",
+				"2a9dc602-f4bb-2ced-2030-dabc3fa4838c"
+			],
+			"owner": "2464728",
+			"folders_order": [],
+			"id": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		}
+	],
+	"folders_order": [
+		"562a7275-cfe7-7e28-2d15-1055936e901b",
+		"ab885a73-4290-2909-404a-3fd578fed0c4",
+		"74c60e69-0d31-5e06-b176-07909577e7e4"
+	],
+	"timestamp": 1533215414893,
+	"owner": "2464728",
+	"public": false,
+	"requests": [
+		{
+			"id": "07f4a8f9-b1b3-794a-cbed-00f10e92962d",
+			"headers": "Authorization: 1234\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "1234",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/mail/confirm?email=mail@mail.ru",
+			"queryParams": [
+				{
+					"key": "email",
+					"value": "mail@mail.ru",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": null,
+			"dataMode": "params",
+			"name": "Привязка почты",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535386208016,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "0d5b67ee-fb7e-f8f6-ae0f-f9a5f74fd987",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/merchant/signin",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Авторизация мерчанта по телефону",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535386830928,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "ab885a73-4290-2909-404a-3fd578fed0c4",
+			"rawModeData": "{\n\t\"phone\" : \"79091529592\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "1231b681-5c11-88e7-6b68-68b2e33ceb49",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/check/phone/exist",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Проверка на наличие номера телефона в базе",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535382137359,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4",
+			"rawModeData": "{\n\t\"phone\" : \"79091529592\"\n}"
+		},
+		{
+			"id": "17d03d08-7777-b6fe-fb63-bb9a48f718fc",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/check/email/exist",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535382054160,
+			"name": "Проверка на наличие email в базе",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\" : \"mail@mail.ru\"\n}"
+		},
+		{
+			"id": "2a9dc602-f4bb-2ced-2030-dabc3fa4838c",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:1234/mail/confirm",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [
+				{
+					"key": "restore_code",
+					"value": "1234",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Подтверждение привязки почты",
+			"description": "Возвращает статус. Редиректит на страницу с собщением.",
+			"descriptionFormat": "html",
+			"time": 1535386375081,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "3332296c-63e1-6c76-d565-bc7e2bb6fec5",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:1234/access/restore/phone?phone=79091529592",
+			"queryParams": [
+				{
+					"key": "phone",
+					"value": "79091529592",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": null,
+			"dataMode": "params",
+			"name": "Восстановление доступа по номеру телефона",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535382291612,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "3472a57d-6f5b-8060-bbe4-58f3b1ab74f4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/merchant/signup",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Регистрация мерчанта по телефону",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535387419202,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "ab885a73-4290-2909-404a-3fd578fed0c4",
+			"rawModeData": "{\n\t\"phone\" : \"79091529592\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "3940561c-7c65-3eb2-e9f0-a272dcd05d23",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/access/restore/phone",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535382841836,
+			"name": "Подтверждение для восстановления смс-кода",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"rawModeData": "{\n\t\"sms_code\" : \"1234\"\n}"
+		},
+		{
+			"id": "410ae77c-5ac5-617b-64f9-156d17162b65",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/signin",
+			"folder": "562a7275-cfe7-7e28-2d15-1055936e901b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535381479175,
+			"name": "Авторизация CUSTOMER по LOGIN",
+			"description": "Авторизация автовладельца по логину",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "410ae77c-5ac5-617b-64f9-156d17162b65",
+			"rawModeData": "{\n\t\"login\" : \"admin\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "4d02d547-2a0a-6b2c-6644-c4fdbb7baf04",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/signup",
+			"folder": "562a7275-cfe7-7e28-2d15-1055936e901b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535381758762,
+			"name": "Регистрация CUSTOMER по LOGIN ",
+			"description": "Регистрация автовладельца по логину",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "4d02d547-2a0a-6b2c-6644-c4fdbb7baf04",
+			"rawModeData": "{\n\t\"login\" : \"admin\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "55bfcc20-10ab-66f1-ce8e-2f118aa0bf5d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/merchant/signup",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Регистрация мерчанта по логину",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535387332962,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "ab885a73-4290-2909-404a-3fd578fed0c4",
+			"rawModeData": "{\n\t\"login\" : \"merchant_admin\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "56fdf1f0-955e-1789-f687-ec4861ae17d0",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/merchant/signin",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Авторизация мерчанта по логину",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535386908290,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "ab885a73-4290-2909-404a-3fd578fed0c4",
+			"rawModeData": "{\n\t\"login\" : \"admin\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "6885d05c-6220-46f9-fdaf-13bb550cbe27",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/post/access/restore/mail",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [
+				{
+					"key": "restore_token",
+					"value": "123456789",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Подтверждение для восстановления по почте",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535382809190,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "9eb05069-6f92-4744-312f-902aff78f92d",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:1234/phone/confirm?phone=79091529592",
+			"queryParams": [
+				{
+					"key": "phone",
+					"value": "79091529592",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": null,
+			"dataMode": "params",
+			"name": "Привязка телефона",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535385997067,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "ab0802fc-8469-4860-2980-037e9464e311",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/signin",
+			"folder": "562a7275-cfe7-7e28-2d15-1055936e901b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535380257180,
+			"name": "Авторизация CUSTOMER по телефону",
+			"description": "Авторизация автовладельца по номеру телефона",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "ab0802fc-8469-4860-2980-037e9464e311",
+			"rawModeData": "{\n\t\"phone\" : \"+79091529592\",\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "be434d36-dd9b-6890-3a2e-c55370f307a8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/check/login/exist",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Проверка на наличие  login в базе",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535382048007,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4",
+			"rawModeData": "{\n\t\"login\" : \"admin\"\n}"
+		},
+		{
+			"id": "ca68236f-e235-5928-c5da-3255b2fdefa6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/phone/confirm",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Подтверждение привязки телефона",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535385934148,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4",
+			"rawModeData": "{\n\t\"smsCode\" : 1234\n}"
+		},
+		{
+			"id": "d2ca21b6-0a18-e762-2de0-0ce5dc143f73",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:1234/access/restore/mail?login=admin",
+			"queryParams": [
+				{
+					"key": "login",
+					"value": "admin",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"data": null,
+			"dataMode": "params",
+			"name": "Восстановление доступа по почте",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1535382476331,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "74c60e69-0d31-5e06-b176-07909577e7e4"
+		},
+		{
+			"id": "d388e3d7-a602-49e5-8508-46bb5e8820c8",
+			"headers": "Content-Type: application/json\nAuthorization: 123456789\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "123456789",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/password/restore",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535385856148,
+			"name": "Смена пароля",
+			"description": "",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"rawModeData": "{\n\t\"password\" : \"qwerty\"\n}"
+		},
+		{
+			"id": "eda57b38-4829-c8bc-c061-e49dc47624cb",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:1234/signup",
+			"folder": "562a7275-cfe7-7e28-2d15-1055936e901b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535382856854,
+			"name": "Регистрация CUSTOMER по ТЕЛЕФОНУ",
+			"description": "Регистрация CUSTOMER по ТЕЛЕФОНУ",
+			"collectionId": "8dbfb8f2-d25a-1712-8242-aba6256f1e48",
+			"responses": [],
+			"rawModeData": "{\n\t\"phone\" : \"79091529592\",\n\t\"password\" : \"qwerty\"\n}"
+		}
+	]
+}

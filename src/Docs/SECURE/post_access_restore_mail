@@ -1,13 +1,23 @@
 Подтверждение прав доступа по смс-коду для восстановления доступа к личному кабинету
 
-POST /access/restore
+POST /access/restore/mail
 
     {
-        sms_code : String // смс-код
+        restore_token : String // смс-код
     }
 
-Status : 200 OK // Доступ восстановлен
+Status : 302 OK // Редиректит на страницу
+
+
+ в url страницы передается следующая структура
 {
+    success : true
     restore_access_token : String, // токен, который работает только на обращение к контроллеру по смене пароля
-    login : String1
+}
+
+    либо
+
+{
+    success : false
+    err_msg : String,
 }

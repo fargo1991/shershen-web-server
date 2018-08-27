@@ -1,11 +1,10 @@
 Контроллер позволяет восстановить доступ к странице по подтверждению через смс-код.
 
-GET access/restore
+GET access/restore/phone
 Content-Type: application/json
 
     {
         phone : String, либо phone
-        email : String, либо email
     }
 
 << ответ

@@ -1,0 +1,9 @@
+POST /mail/confirm
+
+Content-Type : FormData
+
+{
+    restore_code : String
+}
+
+Status 302 - Редирект на страницу с ссобщением

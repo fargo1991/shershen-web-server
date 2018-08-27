@@ -1,5 +1,13 @@
-   GET phone/confirm
-   Authorization : Bearer Token
+/get/phone/confirm
 
-   >> Ответ
-      Status 200 OK : СМС-код отправлен
+Authorization : Bearer Token
+
+{
+    phone : String
+}
+
+Ответ 200 OK:
+    СМС-код отправлен
+
+Ответ 409:
+    Номер телефона уже занят

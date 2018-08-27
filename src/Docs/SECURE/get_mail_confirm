@@ -1,0 +1,10 @@
+GET /mail/confirm
+
+Authorization : Bearer Token
+
+{
+    email : String
+}
+
+Status 200 OK - Письмо с паролем отправлено
+Status 409 - Почтовый ящик уже занят

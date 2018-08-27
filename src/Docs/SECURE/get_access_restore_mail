@@ -1,7 +1,7 @@
 GET access/restore/mail
 
 {
-    restore_token : String
+    login : String
 }
 
 Status : 308 // Успешно подтверждено восстановление по e-mail. Редирект на страницу смены пароля. restore_token гасится.
