@@ -5,7 +5,7 @@
       "database": "fargo-1991_shershen",
       "host": "postgresql.fargo-1991.myjino.ru",
       "username": "fargo-1991_shershen",
-      "password": "15mlk89ser",
+      "password": "qwerty",
       "dialect": "postgresql"
     },
     "test": {
@@ -22,5 +22,6 @@
       "database": "",
       "dialect": "postgresql"
     }
-  }
+  },
+  "SECRET" : "mYnAMEiSvASYA_2t_(*%sfg#_gsa!@sf#"
 }
