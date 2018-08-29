@@ -8,32 +8,9 @@ var SmsService = require('../../services/smsService'),
 
     { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH,
       MIN_PHONE_LENGTH, MAX_PHONE_LENGTH,
-      MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH } = require('../../constants.json');
+      MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH } = require('../../constants.json'),
 
-function failPhoneConflict(res) {
-  res.status(409);
-  res.send({success: false, errMsg: 'Номер телефона уже занят'})
-}
-
-function failMailConflict(res){
-  res.status(409);
-  res.send({ success : false, errMsg : 'Почтовый адрес уже занят'})
-}
-
-function failLoginConflict(res){
-  res.status(409);
-  res.send({ success : false, errMsg : 'Login уже занят'})
-}
-
-function successResponse(res, obj){
-    res.status(200);
-    res.send({ success : true, obj : obj })
-}
-
-function failResponse(res) {
-  res.status(500);
-  res.send({ success: false, msg : 'Ошибка сервера'})
-}
+  { failLoginConflict, failPhoneConflict, failMailConflict, failResponse, successResponse, invalidRequest } = require('../response');
 
 module.exports = function(){
 
@@ -110,9 +87,8 @@ module.exports = function(){
       const errors = validationResult(req);
 
       if(!errors.isEmpty()){
-        res.status(400)
-        res.send({ errors : errors.array() });
-        return false;
+        invalidRequest(res, errors.array())
+        return false
       }
 
       if (req.body.phone && req.body.email){
@@ -145,5 +121,7 @@ module.exports = function(){
       }
 
     })
+
+  console.log('[ INIT | SUCCESS ] customer signUp router');
 
 }

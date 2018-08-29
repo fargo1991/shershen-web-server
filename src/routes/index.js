@@ -3,12 +3,14 @@
  */
 var app = global.APP;
 
-var customerRoutes = require('./customer')
+var customerRoutes = require('./customer');
+var secureRoutes = require('./secure');
 
 module.exports = {
     init : function(){
 
         customerRoutes();
+        secureRoutes();
 
     }
 }
