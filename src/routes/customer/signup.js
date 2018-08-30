@@ -8,7 +8,8 @@ var SmsService = require('../../services/smsService'),
 
     { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH,
       MIN_PHONE_LENGTH, MAX_PHONE_LENGTH,
-      MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH } = require('../../constants.json'),
+      MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH,
+      ROLES } = require('../../constants.json'),
 
   { failLoginConflict, failPhoneConflict, failMailConflict, failResponse, successResponse, invalidRequest } = require('../response');
 
@@ -19,12 +20,17 @@ module.exports = function(){
       mailService = MailService();
 
   function phoneSignUp(req, res) {
-    var user={}
+    var user={
+      phone : req.body.phone,
+      password : req.body.password,
+      login : req.body.login,
+      role : ROLES.CUSTOMER
+    }
 
-    secureService.checkPhoneUnique(req.body.phone)
+    secureService.checkPhoneUnique(user.phone)
       .then(
         (_res)=> {
-          if(_res) return DB.models.user.create( req.body )
+          if(_res) return DB.models.user.create( user )
         },
         (err)=> {
           if(!err) failPhoneConflict(res);
@@ -34,7 +40,7 @@ module.exports = function(){
       .then(
         (result) => {
           user = result.dataValues;
-          return smsService.sendCode(req.body.phone)
+          return smsService.sendCode(user.phone)
         }
       )
       .then( result => successResponse(res, user) )
@@ -42,7 +48,12 @@ module.exports = function(){
   }
 
   function mailSignUp(req, res) {
-    var user = {}
+    var user = {
+      email : req.body.email,
+      password: req.body.password,
+      login : req.body.login,
+      role : ROLES.CUSTOMER
+    }
 
     secureService.checkEMailUnique(req.body.email)
       .then(

@@ -1,4 +1,6 @@
-var Sequelize = require('sequelize');
+var Sequelize = require('sequelize'),
+  { ROLES } = require('../constants.json');
+
 
 module.exports = function(){
 
@@ -6,7 +8,12 @@ module.exports = function(){
     login : Sequelize.STRING,
     phone : Sequelize.STRING,
     password : Sequelize.STRING,
-    email : Sequelize.STRING
-  });
+    email : Sequelize.STRING,
+    role : { type : Sequelize.STRING, allowNull : false, defaultValue : ROLES.CUSTOMER }
+  },
+    {
+      paranoid : true
+    }
+    );
 
 }

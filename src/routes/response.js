@@ -28,3 +28,7 @@ module.exports.invalidRequest = function (res, msg) {
   res.status(400);
   res.send({ success : false, msg : msg })
 }
+module.exports.notFound = function(res){
+  res.status(404);
+  res.send({ success : false, msg : 'Запрашиваемый ресурс не найден'})
+}

@@ -6,5 +6,11 @@
   "MAX_PASSWORD_LENGTH" : 30,
 
   "MIN_PHONE_LENGTH" : 11,
-  "MAX_PHONE_LENGTH" : 30
+  "MAX_PHONE_LENGTH" : 30,
+
+
+  "ROLES" : {
+    "CUSTOMER" : "CUSTOMER",
+    "MERCHANT" : "MERCHANT"
+  }
 }
