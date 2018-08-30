@@ -28,7 +28,18 @@ module.exports.invalidRequest = function (res, msg) {
   res.status(400);
   res.send({ success : false, msg : msg })
 }
+
 module.exports.notFound = function(res){
   res.status(404);
   res.send({ success : false, msg : 'Запрашиваемый ресурс не найден'})
+}
+
+module.exports.unauthorized = function (res) {
+  res.status(401);
+  res.send({ success :false, msg : 'Пользователь не авторизован'})
+}
+
+module.exports.forbidden = function (res) {
+  res.status(403);
+  res.send({ success : false, msg : 'Нет прав доступа к запрашиваемому ресурсу'})
 }
