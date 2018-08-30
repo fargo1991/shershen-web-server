@@ -2,29 +2,29 @@
  * Created by yaroslav on 27.08.18.
  */
 var SmsService = require('../../services/smsService'),
-    SecureService = require('../../services/secureService'),
-    MailService = require('../../services/mailService.js'),
-    { check, oneOf, validationResult } = require('express-validator/check'),
+  SecureService = require('../../services/secureService'),
+  MailService = require('../../services/mailService.js'),
+  { check, oneOf, validationResult } = require('express-validator/check'),
 
-    { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH,
-      MIN_PHONE_LENGTH, MAX_PHONE_LENGTH,
-      MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH,
-      ROLES } = require('../../constants.json'),
+  { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH,
+    MIN_PHONE_LENGTH, MAX_PHONE_LENGTH,
+    MIN_PASSWORD_LENGTH, MAX_PASSWORD_LENGTH,
+    ROLES } = require('../../constants.json'),
 
   { failLoginConflict, failPhoneConflict, failMailConflict, failResponse, successResponse, invalidRequest } = require('../response');
 
 module.exports = function(){
 
   var smsService = SmsService(),
-      secureService = SecureService(),
-      mailService = MailService();
+    secureService = SecureService(),
+    mailService = MailService();
 
   function phoneSignUp(req, res) {
     var user={
       phone : req.body.phone,
       password : req.body.password,
       login : req.body.login,
-      role : ROLES.CUSTOMER
+      role : ROLES.MERCHANT
     }
 
     secureService.checkPhoneUnique(user.phone)
@@ -52,7 +52,7 @@ module.exports = function(){
       email : req.body.email,
       password: req.body.password,
       login : req.body.login,
-      role : ROLES.CUSTOMER
+      role : ROLES.MERCHANT
     }
 
     secureService.checkEMailUnique(req.body.email)
@@ -92,7 +92,7 @@ module.exports = function(){
     check('password').exists().isLength({ min : MIN_PASSWORD_LENGTH, max : MAX_PASSWORD_LENGTH})
   ];
 
-  global.APP.post('/signup', validationRules,
+  global.APP.post('/merchant/signup', validationRules,
     function(req, res){
 
       const errors = validationResult(req);
@@ -103,9 +103,9 @@ module.exports = function(){
       }
 
       if (req.body.phone && req.body.email){
-          res.status(404);
-          res.send({ success : false, msg : 'Нужно выбрать тип регистрации по телефону или почте. ' +
-          '* Привязка почты или телефона будет доступна после регистрации.'})
+        res.status(404);
+        res.send({ success : false, msg : 'Нужно выбрать тип регистрации по телефону или почте. ' +
+        '* Привязка почты или телефона будет доступна после регистрации.'})
       }
 
       try {
@@ -133,6 +133,6 @@ module.exports = function(){
 
     })
 
-  console.log('[ INIT | SUCCESS ] customer signUp router');
+  console.log('[ INIT | SUCCESS ] merchant signUp router');
 
 }
