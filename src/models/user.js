@@ -4,7 +4,7 @@ var Sequelize = require('sequelize'),
 
 module.exports = function(){
 
-  global.DB.define('user', {
+  let user = global.DB.define('user', {
     login : Sequelize.STRING,
     phone : Sequelize.STRING,
     password : Sequelize.STRING,
@@ -14,6 +14,8 @@ module.exports = function(){
     {
       paranoid : true
     }
-    );
+  );
+
+  return user;
 
 }

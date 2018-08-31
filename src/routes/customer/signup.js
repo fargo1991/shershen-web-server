@@ -4,6 +4,8 @@
 var SmsService = require('../../services/smsService'),
     SecureService = require('../../services/secureService'),
     MailService = require('../../services/mailService.js'),
+    jwt = require('jsonwebtoken'),
+    { PASSWORD_SECRET } = require('../../config.json'),
     { check, oneOf, validationResult } = require('express-validator/check'),
 
     { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH,
@@ -22,7 +24,7 @@ module.exports = function(){
   function phoneSignUp(req, res) {
     var user={
       phone : req.body.phone,
-      password : req.body.password,
+      password : jwt.sign({ password : req.body.password }, PASSWORD_SECRET),
       login : req.body.login,
       role : ROLES.CUSTOMER
     }
@@ -50,7 +52,7 @@ module.exports = function(){
   function mailSignUp(req, res) {
     var user = {
       email : req.body.email,
-      password: req.body.password,
+      password : jwt.sign({ password : req.body.password }, PASSWORD_SECRET),
       login : req.body.login,
       role : ROLES.CUSTOMER
     }
