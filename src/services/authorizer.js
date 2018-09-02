@@ -101,7 +101,7 @@ module.exports = function() {
       if (credentials.phone) return authorizeByPhone(credentials);
       else if (credentials.email) return authorizeByMail(credentials);
       else if (credentials.login) return authorizeByLogin(credentials);
-      else throw new Error('PHONE || EMAIL || LOGIN needs to authorize user');
+      else throw new Error({ code : 400, msg : 'PHONE || EMAIL || LOGIN needs to authorize user'});
     }
   }
 }
