@@ -81,7 +81,7 @@ config =
           route : '/merchant',
           methods : {
             'GET' : { access : true, accessFields : 'all' },
-            'POST' : { access : false, accessFields : 'none' },
+            'POST' : { access : true, accessFields : 'all' },
             'PUT' : { access : false, accessFields : 'none'},
             'DELETE' : { access : false }
           }

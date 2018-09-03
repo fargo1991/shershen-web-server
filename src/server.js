@@ -18,12 +18,12 @@ global.APP = app;
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
-
+var secureService = SecureService();
+app.use(secureService.authenticate)
 models.init();
 routes.init();
 
-var secureService = SecureService();
-app.use(secureService.authenticate)
+
 
 DB.sync({ alter : true }).then(
   (res) => {

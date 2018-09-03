@@ -2,12 +2,12 @@ var jwt = require("jsonwebtoken"),
     authorizer = require('./authorizer')(),
     { SECRET } = require('../constants.json'),
 
-    accessControl = require('./accessControls'),
     { unauthorized, forbidden, failResponse } = require('../routes/response');
 
 module.exports = function(){
 
   var DB = GLOBAL["DB"];
+  var accessControl = require('./accessControls');
 
   var generateToken = function(user){
     return jwt.sign(
@@ -17,8 +17,9 @@ module.exports = function(){
       }, SECRET
     )
   }
-  var verifyToken = function(token){ return jwt.verify(token, SECRET) }
+  var verifyToken = function(token){ console.log('token'); console.log(token); return jwt.verify(token, SECRET) }
   let hasFieldValues = function(field){   let result = field.search(/=/); return result > -1 }
+
   /**
    *
    *  Проверка доступа к контроллеру, методу, и полям объекта, в зависимотси от роли пользователя.
@@ -36,6 +37,7 @@ module.exports = function(){
 
     let roleAccessControls = accessControl.find( roleControls => { return roleControls.role == role });
     let routeAccessControls = roleAccessControls.routes.find( accessRoute => { return accessRoute.route == route });
+    console.log(route)
 
     if (routeAccessControls !== -1){
       let methodAccessControls = routeAccessControls.methods[method.toUpperCase()];
@@ -75,17 +77,12 @@ module.exports = function(){
   let authenticate = function(){
     return function(req,res,next){
 
-      let access_token = (req.headers['Authorization'])
+      let access_token = req.headers.authorization;//['authorization'])
+      console.log(access_token)
 
       let userRole = access_token ?
         verifyToken(access_token).role :
         'GUEST';
-
-      console.log( checkAccessControl(
-        req.originalUrl,
-        req.method,
-        userRole,
-        req.method.toUpperCase() == 'GET' ? req.query : req.body) )
 
       if( !checkAccessControl(
           req.originalUrl,
@@ -93,6 +90,12 @@ module.exports = function(){
           userRole,
           req.method.toUpperCase() == 'GET' ? req.query : req.body) )
       {
+        console.log(checkAccessControl(
+          req.originalUrl,
+          req.method,
+          userRole,
+          req.method.toUpperCase() == 'GET' ? req.query : req.body));
+        console.log(userRole)
         forbidden(res)
         return false
       }

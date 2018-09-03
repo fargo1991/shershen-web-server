@@ -15,6 +15,7 @@ module.exports = function() {
           created: Date.now(),
           expiredThrow: 1209600033
         }, SECRET),
+    
       refresh_token: jwt.sign(
         {
           userId: user.id,
