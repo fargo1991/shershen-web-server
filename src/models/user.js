@@ -1,7 +1,6 @@
 var Sequelize = require('sequelize'),
   { ROLES } = require('../constants.json');
 
-
 module.exports = function(){
 
   let user = global.DB.define('user', {

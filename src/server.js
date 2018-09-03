@@ -4,6 +4,7 @@
 var app = require("express")();
 var Sequelize = require("sequelize");
 var bodyParser = require("body-parser");
+var SecureService = require("./services/secureService");
 
 var CONFIG = require('./config.json');
 
@@ -20,6 +21,9 @@ app.use( bodyParser.urlencoded() );
 
 models.init();
 routes.init();
+
+var secureService = SecureService();
+app.use(secureService.authenticate)
 
 DB.sync({ alter : true }).then(
   (res) => {

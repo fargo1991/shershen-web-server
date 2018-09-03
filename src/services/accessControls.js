@@ -27,86 +27,6 @@ config =
           }
         },
         {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : true },
-            'POST' : { access : false },
-            'PUT' : { access : false },
-            'DELETE' : { access : false }
-          }
-        },
-        {
-          /** @merchant */
-          route : '/merchant',
-          methods : {
-            'GET' : { access : true, accessFields : 'all' },
-            'POST' : { access : true, accessFields : 'all' },
-            'PUT' : { access : true, accessFields : 'all'},
-            'DELETE' : { access : true }
-          }
-        }
-      ]
-    },
-    {
-      role : FRAN_ADMIN,
-      routes : [
-        {
-          /** @user  */
-          route : '/user',
-          methods : {
-            'GET' : { access : true, accessFields : 'all', exceptedFields : [ 'password' ] },
-            'POST' : { access : true, accessFields : 'all', exceptedFields : [ `role=${FRAN_ADMIN},${ADMIN}` ] },
-            'PUT' : { access : true, accessFields : 'all', exceptedFields : [ `role=${FRAN_ADMIN},${ADMIN}` ] },
-            'DELETE' : { access : true }
-          }
-        },
-        {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : true },
-            'POST' : { access : false },
-            'PUT' : { access : false },
-            'DELETE' : { access : false }
-          }
-        },
-        {
-          /** @merchant */
-          route : '/merchant',
-          methods : {
-            'GET' : { access : true, accessFields : 'all' },
-            'POST' : { access : true, accessFields : 'all' },
-            'PUT' : { access : true, accessFields : 'all' },
-            'DELETE' : { access : true }
-          }
-        }
-      ]
-    },
-    {
-      role : BRAND_ADMIN,
-      routes : [
-        {
-          /** @user  */
-          route : '/user',
-          methods : {
-            'GET' : { access : true, accessFields : 'all', exceptedFields : [ 'password' ] },
-            'POST' : { access : true, accessFields : 'all', exceptedFields : [ `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` ] },
-            'PUT' : { access : true, accessFields : 'all', exceptedFields : [ `role=${BRAND_ADMIN},${FRAN_ADMIN},${ADMIN}` ] },
-            'DELETE' : { access : true }
-          }
-        },
-        {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : true },
-            'POST' : { access : false },
-            'PUT' : { access : false },
-            'DELETE' : { access : false }
-          }
-        },
-        {
           /** @merchant */
           route : '/merchant',
           methods : {
@@ -128,16 +48,6 @@ config =
             'GET' : { access : true, accessFields : 'all', exceptedFields : ['password'] },
             'POST' : { access : false, accessFields : 'none'  },
             'PUT' : { access : true, accessFields : 'all', exceptedFields : ['role'] },
-            'DELETE' : { access : false }
-          }
-        },
-        {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : true },
-            'POST' : { access : false },
-            'PUT' : { access : false },
             'DELETE' : { access : false }
           }
         },
@@ -167,16 +77,6 @@ config =
           }
         },
         {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : true },
-            'POST' : { access : false },
-            'PUT' : { access : false },
-            'DELETE' : { access : false }
-          }
-        },
-        {
           /** @merchant */
           route : '/merchant',
           methods : {
@@ -202,16 +102,6 @@ config =
           }
         },
         {
-          /** @PhoneNumber confirmation */
-          route : '/user/phone/confirm',
-          methods : {
-            'GET' : { access : false },
-            'POST' : { access : false },
-            'PUT' : { access : false },
-            'DELETE' : { access : false }
-          }
-        },
-        {
           /** @merchant */
           route : '/merchant',
           methods : {
@@ -225,3 +115,5 @@ config =
     },
 
   ]
+
+module.exports = config;

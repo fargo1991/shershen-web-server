@@ -81,9 +81,14 @@ module.exports = function(){
         verifyToken(access_token).role :
         'GUEST';
 
+      console.log( checkAccessControl(
+        req.originalUrl,
+        req.method,
+        userRole,
+        req.method.toUpperCase() == 'GET' ? req.query : req.body) )
 
       if( !checkAccessControl(
-          req.baseUrl,
+          req.originalUrl,
           req.method,
           userRole,
           req.method.toUpperCase() == 'GET' ? req.query : req.body) )
