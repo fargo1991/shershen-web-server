@@ -37,7 +37,6 @@ module.exports = function(){
 
     let roleAccessControls = accessControl.find( roleControls => { return roleControls.role == role });
     let routeAccessControls = roleAccessControls.routes.find( accessRoute => { return accessRoute.route == route });
-    console.log(route)
 
     if (routeAccessControls !== -1){
       let methodAccessControls = routeAccessControls.methods[method.toUpperCase()];
@@ -70,6 +69,7 @@ module.exports = function(){
       } else if (!methodAccessControls.accessFields){
         return true
       }
+      // TODO: Нет проверки accessFields == none. Надо сделать
     }
     return true;
   }
