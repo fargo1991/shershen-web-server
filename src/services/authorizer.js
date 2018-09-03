@@ -15,7 +15,6 @@ module.exports = function() {
           created: Date.now(),
           expiredThrow: 1209600033
         }, SECRET),
-    
       refresh_token: jwt.sign(
         {
           userId: user.id,
@@ -49,17 +48,17 @@ module.exports = function() {
 
   var authorizeByPhone = function (credentials) {
     return global.DB.models.user.findOne({where: { phone : credentials.phone }})
-        .then(
-          result => {
-            if (result) {
-              var user = result.dataValues;
-              if (credentials.password == jwt.verify(user.password, PASSWORD_SECRET).password)  return createToken(user)
-              throw new Error("401")
-            } else {
-              throw new Error("401")
-            }
+      .then(
+        result => {
+          if (result) {
+            var user = result.dataValues;
+            if (credentials.password == jwt.verify(user.password, PASSWORD_SECRET).password)  return createToken(user)
+            throw new Error("401")
+          } else {
+            throw new Error("401")
           }
-        )
+        }
+      )
       .catch(err => { console.log(err); if(!err.message == "401") throw new Error("500") })
   }
 
@@ -98,7 +97,6 @@ module.exports = function() {
   return {
     authorize: function (credentials) {
       if (!credentials.password) throw new Error('PASSWORD needs');
-
       if (credentials.phone) return authorizeByPhone(credentials);
       else if (credentials.email) return authorizeByMail(credentials);
       else if (credentials.login) return authorizeByLogin(credentials);

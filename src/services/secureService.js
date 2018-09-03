@@ -1,6 +1,6 @@
 var jwt = require("jsonwebtoken"),
     authorizer = require('./authorizer')(),
-    { SECRET } = require('../constants.json'),
+    { SECRET } = require('../config.json'),
 
     { unauthorized, forbidden, failResponse } = require('../routes/response');
 
@@ -17,7 +17,7 @@ module.exports = function(){
       }, SECRET
     )
   }
-  var verifyToken = function(token){ console.log('token'); console.log(token); return jwt.verify(token, SECRET) }
+  var verifyToken = function(token){ console.log('token'); console.log(token); console.log(SECRET); return jwt.verify(token, SECRET) }
   let hasFieldValues = function(field){   let result = field.search(/=/); return result > -1 }
 
   /**
