@@ -70,11 +70,17 @@ module.exports = function(){
       .then(
         result => {
           user = result.dataValues;
-          mailService.sendCode(req.body.email);
+          return secureService.generateMailConfirmationCode(user.id);
+        }
+      )
+      .then(
+        result => {
+          return mailService.sendCode(req.body.email, result);
+        }
+      )
+      .then(
+        result => {
           successResponse(res, user)
-        },
-        error => {
-          console.log(error)
         }
       )
       .catch(

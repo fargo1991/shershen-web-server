@@ -25,6 +25,7 @@ routes.init();
 
 
 
+// DB.sync({ force : true }).then(
 DB.sync({ alter : true }).then(
   (res) => {
       console.log('Sequelize-models synchronized with DB')

@@ -17,7 +17,7 @@ module.exports = function(){
       }, SECRET
     )
   }
-  var verifyToken = function(token){ console.log('token'); console.log(token); console.log(SECRET); return jwt.verify(token, SECRET) }
+  var verifyToken = function(token){ return jwt.verify(token, SECRET) }
   let hasFieldValues = function(field){   let result = field.search(/=/); return result > -1 }
 
   /**
@@ -38,7 +38,7 @@ module.exports = function(){
     let roleAccessControls = accessControl.find( roleControls => { return roleControls.role == role });
     let routeAccessControls = roleAccessControls.routes.find( accessRoute => { return accessRoute.route == route });
 
-    if (routeAccessControls !== -1){
+    if (routeAccessControls !== -1 && routeAccessControls){
       let methodAccessControls = routeAccessControls.methods[method.toUpperCase()];
 
       if (!methodAccessControls.access) return false;
@@ -183,6 +183,30 @@ module.exports = function(){
           })
       });
 
+    },
+
+    generateMailConfirmationCode : function(userId){
+      return new Promise( (resolve, reject) => {
+
+        let code = jwt.sign({ userId : userId, createdAt : Date.now() },
+          SECRET
+        );
+
+        DB.models.user.update({ mailConfirmationCode : code }, { where : { id : userId } })
+          .then(
+            result => resolve(code),
+            error => reject(error)
+          )
+      });
+
+    },
+
+    verifyMailConfirmationCode : function (code) {
+        return DB.models.user.find({ where : { mailConfirmationCode : code } })
+    },
+
+    approveMailConfirmation : function(userId){
+      return DB.models.user.update({ mailConfirmed : true}, { where : { id : userId }})
     },
     /**
      * middleware

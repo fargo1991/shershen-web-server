@@ -8,6 +8,10 @@ module.exports = function(){
     phone : Sequelize.STRING,
     password : Sequelize.STRING,
     email : Sequelize.STRING,
+    mailConfirmationCode : Sequelize.STRING,
+    mailConfirmed : { type : Sequelize.BOOLEAN, defaultValue : false },
+    phoneConfirmationCode : Sequelize.STRING,
+    phoneConfirmed : { type : Sequelize.BOOLEAN, defaultValue : false },
     role : { type : Sequelize.STRING, allowNull : false, defaultValue : ROLES.CUSTOMER }
   },
     {
