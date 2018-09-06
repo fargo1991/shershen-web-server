@@ -1,6 +1,8 @@
-var nodemailer = require('nodemailer');
-var Handlebars = require('handlebars');
-var signupCodeTemplate = require('../templates/email/signupCode');
+var nodemailer = require('nodemailer'),
+    Handlebars = require('handlebars'),
+    signupCodeTemplate = require('../templates/email/signupCode'),
+
+    { MAIL } = require('../config.json');
 
 module.exports = function () {
 
@@ -12,16 +14,16 @@ module.exports = function () {
 
           var transporter = nodemailer.createTransport({
             service : 'Jino',
-            host : 'smtp.jino.ru',
-            port : 25,
+            host : MAIL.HOST,
+            port : MAIL.PORT,
             auth : {
-              user : 'robot@fargo-1991.myjino.ru',
-              pass : 'qwerty'
+              user : MAIL.E_MAIL,
+              pass : MAIL.PASSWORD
             }
           });
 
           var mailOptions = {
-            from : 'robot@fargo-1991.myjino.ru',
+            from : MAIL.E_MAIL,
             to : email,
             subject : 'SHERSHEN | Подтверждение почтового адреса',
             html : template({ code : code })

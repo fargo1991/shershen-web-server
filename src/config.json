@@ -23,6 +23,12 @@
       "dialect": "postgresql"
     }
   },
+  "MAIL" : {
+    "E_MAIL" : "robot@fargo-1991.myjino.ru",
+    "PASSWORD" : "qwerty",
+    "HOST" : "smtp.jino.ru",
+    "PORT" : 25
+  },
   "SECRET" : "mYnAMEiSvASYA_2t_(*%sfg#_gsa!@sf#",
   "PASSWORD_SECRET" : "anfl893%&kdfg_+4523o4igfdgsg>??Adsgas"
 }

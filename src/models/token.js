@@ -8,7 +8,8 @@ module.exports = function(){
 
   let token = DB.define('token', {
     token : Sequelize.STRING,
-    refresh_token : Sequelize.STRING
+    refresh_token : Sequelize.STRING,
+    restore_token : Sequelize.STRING
   });
 
   return token;
