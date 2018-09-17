@@ -5,6 +5,9 @@ var checkPhoneExistRoute = require('./checkPhoneExist');
 var sendMailConfirmRoute = require('./sendMailConfirm');
 var mailConfirmRoute = require('./mailConfirm');
 
+var sendAccessRestoreMail = require('./sendAccessRestoreMail');
+var accessRestoreMail = require('./redirectAccessRestoreMail');
+
 module.exports = function(){
 
   checkLoginExistRoute();
@@ -13,5 +16,8 @@ module.exports = function(){
 
   sendMailConfirmRoute();
   mailConfirmRoute();
+
+  sendAccessRestoreMail();
+  accessRestoreMail();
 
 }

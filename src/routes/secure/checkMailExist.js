@@ -1,3 +1,9 @@
+/**
+ *
+ * Проверка на наличие email в базе
+ *
+ * */
+
 var SecureService = require('../../services/secureService'),
 
   { check, validationResult } = require('express-validator/check'),

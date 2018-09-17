@@ -7,20 +7,6 @@
       "username": "fargo-1991_shershen",
       "password": "qwerty",
       "dialect": "postgresql"
-    },
-    "test": {
-      "username": "",
-      "password": "",
-      "host": "",
-      "database": "",
-      "dialect": "postgresql"
-    },
-    "production": {
-      "username": "",
-      "password": "",
-      "host": "",
-      "database": "",
-      "dialect": "postgresql"
     }
   },
   "MAIL" : {

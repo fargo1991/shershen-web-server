@@ -1,3 +1,10 @@
+/**
+ *
+ * Проверка на наличие login в базе
+ *
+ * */
+
+
 var SecureService = require('../../services/secureService'),
     { check, validationResult } = require('express-validator/check'),
     { MIN_LOGIN_LENGTH, MAX_LOGIN_LENGTH } = require('../../constants.json'),

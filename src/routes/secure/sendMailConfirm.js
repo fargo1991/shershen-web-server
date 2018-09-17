@@ -1,5 +1,8 @@
 /**
  * Created by yaroslav on 06.09.18.
+ *
+ * Запрос на привязку почты юзера
+ *
  */
 
 var SecureService = require("../../services/secureService"),
@@ -29,7 +32,7 @@ module.exports = function(){
       )
       .then(
         result => {
-          return mailService.sendCode(user.email, result)
+          return mailService.sendCode(user.email, result, user.login)
         }
       )
       .then(
