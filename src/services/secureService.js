@@ -206,7 +206,7 @@ module.exports = function(){
     },
 
     approveMailConfirmation : function(userId){
-      return DB.models.user.update({ mailConfirmed : true}, { where : { id : userId }})
+      return DB.models.user.update({ mailConfirmed : true, mailConfirmationCode : null}, { where : { id : userId }})
     },
     /**
      * middleware
