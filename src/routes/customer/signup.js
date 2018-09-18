@@ -75,7 +75,7 @@ module.exports = function(){
       )
       .then(
         result => {
-          return mailService.sendCode(req.body.email, result);
+          return mailService.sendCode(req.body.email, result, user.login);
         }
       )
       .then(

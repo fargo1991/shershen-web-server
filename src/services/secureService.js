@@ -202,14 +202,31 @@ module.exports = function(){
     },
 
     verifyMailConfirmationCode : function (code) {
-        return DB.models.user.find({ where : { mailConfirmationCode : code } })
+
+      return new Promise( (resolve, reject) => {
+
+        DB.models.user.find({ where : { mailConfirmationCode : code } })
+          .then(
+            result => {
+              if (!result) reject("Code confirmation failed");
+              resolve(result.dataValues);
+            },
+            reject => reject("Code confirmation failed")
+          )
+      })
     },
 
     approveMailConfirmation : function(userId){
-      return DB.models.user.update({ mailConfirmed : true, mailConfirmationCode : null}, { where : { id : userId }})
+      return new Promise( (resolve, reject) => {
+        DB.models.user.update({ mailConfirmed : true, mailConfirmationCode : null }, { where : { id : userId }, returning : true })
+          .then(
+            result => { resolve( result[1][0].dataValues ) },
+            error => reject(error)
+          )
+      })
     },
     /**
-     * middleware
+     * authentication middleware
      * */
     authenticate : authenticate(),
     authorize : authorizer.authorize
