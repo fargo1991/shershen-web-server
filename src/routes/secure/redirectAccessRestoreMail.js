@@ -3,7 +3,8 @@
  *  Перенаправление на страницу смены пароля
  *
  */
-var { unauthorized } = require('../response');
+var { unauthorized } = require('../response'),
+    { WEB_FRONT_HOST_URL } = require('../../config.json');
 
 var MailService = require("../../services/mailService");
 
@@ -24,7 +25,7 @@ module.exports = function(){
         // а пока что:
         if(req.query.restore_token && req.query.restore_token == "1234"){
 
-          res.header('Location', 'http://localhost:3000/password/restore')
+          res.header('Location', WEB_FRONT_HOST_URL + '/password/restore')
           res.status(301);
           res.send({msg: 'Redirecting to restorePage'})
 

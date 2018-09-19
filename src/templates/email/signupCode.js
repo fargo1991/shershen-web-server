@@ -24,7 +24,7 @@ module.exports =
   "                border: solid 1px #f0f0f0;\n" +
   "            }\n" +
   "            .header {\n" +
-  "                background-color: cornflowerblue;\n" +
+  "                background-color: #194561;\n" +
   "                color: white;\n" +
   "                width: auto;\n" +
   "                font-size: 24px;\n" +
@@ -46,7 +46,7 @@ module.exports =
   "            }\n" +
   "            .link_style {\n" +
   "                font-size: 18px;\n" +
-  "                color: cornflowerblue;\n" +
+  "                color: #194561;\n" +
   "            }\n" +
   "            .ps{\n" +
   "                font-size: 11px;\n" +

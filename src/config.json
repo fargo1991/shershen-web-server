@@ -1,5 +1,6 @@
 {
   "HOST_URL" : 1234,
+  "WEB_FRONT_HOST_URL" : "http://localhost:3000",
   "DB" : {
     "development": {
       "database": "fargo-1991_shershen",
