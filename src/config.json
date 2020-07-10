@@ -3,19 +3,19 @@
   "WEB_FRONT_HOST_URL" : "http://localhost:3000",
   "DB" : {
     "development": {
-      "database": "fargo-1991_shershen",
-      "host": "postgresql.fargo-1991.myjino.ru",
-      "username": "fargo-1991_shershen",
+      "database": "shershen",
+      "host": "localhost:5432",
+      "username": "shershen",
       "password": "qwerty",
       "dialect": "postgresql"
     }
   },
   "MAIL" : {
-    "E_MAIL" : "robot@fargo-1991.myjino.ru",
+    "E_MAIL" : "robot@shershen.ru",
     "PASSWORD" : "qwerty",
-    "HOST" : "smtp.jino.ru",
+    "HOST" : "smtp.shershen.ru",
     "PORT" : 25
   },
-  "SECRET" : "mYnAMEiSvASYA_2t_(*%sfg#_gsa!@sf#",
-  "PASSWORD_SECRET" : "anfl893%&kdfg_+4523o4igfdgsg>??Adsgas"
+  "SECRET" : "qwerty",
+  "PASSWORD_SECRET" : "qwerty"
 }
